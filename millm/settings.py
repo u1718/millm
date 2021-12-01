@@ -153,6 +153,7 @@ STATICFILES_DIRS = (                                     #am#ph
                                                          #am#ph
 SITE_ID = 1                                              #am#ph
 
+#print(photoprologue.PHOTOLOGUE_APP_DIR)
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 

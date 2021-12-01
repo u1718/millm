@@ -18,9 +18,12 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import include, path
 from django.views.generic import TemplateView
+from photologue.views import GalleryListView, PhotoListView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('photologue/', include('photologue.urls')),
     path('', TemplateView.as_view(template_name="homepage.html"), name='homepage'),
+    path('l/', GalleryListView.as_view(paginate_by=5), name='photologue_custom-gallery-list'),
+    path('p/', PhotoListView.as_view(paginate_by=5), name='photologue_custom-gallery-list'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
