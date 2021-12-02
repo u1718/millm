@@ -19,11 +19,14 @@ from django.contrib import admin
 from django.urls import include, path
 from django.views.generic import TemplateView
 from photologue.views import GalleryListView, PhotoListView
+from . import views
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('photologue/', include('photologue.urls')),
-    path('', TemplateView.as_view(template_name="homepage.html"), name='homepage'),
+    path('', views.index, name='index'),
     path('l/', GalleryListView.as_view(paginate_by=5), name='photologue_custom-gallery-list'),
     path('p/', PhotoListView.as_view(paginate_by=5), name='photologue_custom-gallery-list'),
+    path('<int:photo_id>/vote/', views.vote, name='vote'),
+    path('admin/', admin.site.urls),
+    path('photologue/', include('photologue.urls')),
+    path('h/', TemplateView.as_view(template_name="homepage.html"), name='homepage'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
