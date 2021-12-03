@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block title %}Photologue example project{% endblock %}
+
+{% block content %}
+{% if latest_question_list %}
+    <ul>
+    {% for photo in photo_list %}
+    <div class="row">
+      <div class="col-lg-12">
+	<div class="page-header">
+          <li><a href="/milllm/{{ photo.id }}/">{{ photo.image_filename }}</a></li>
+	</div>
+      </div>
+    </div>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No polls are available.</p>
+{% endif %}
