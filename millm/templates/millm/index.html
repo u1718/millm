@@ -1,37 +1,67 @@
-{% extends 'base.html' %}
+{% extends 'millm/base.html' %}
+{% load static %}
 
-{% block title %}Photologue example project{% endblock %}
+{% block title %}CNC$led{% endblock %}
 
-{% block content %}
+{% block Hero %}
+<!-- ======= Hero Section ======= -->
+<section id="hero" class="d-flex align-items-center">
+  <div class="container" data-aos="zoom-out" data-aos-delay="100">
+    <h1>Welcome to <span>CNC$led</span></h1>
+    <h2>2.5D millimg</h2>
+    <div class="d-flex">
+      <a href="#portfolio" class="btn-get-started scrollto">Get Started</a>
+      <!-- <a href="https://www.youtube.com/watch?v=jDDaplaOz7Q" class="glightbox btn-watch-video"><i class="bi bi-play-circle"></i><span>Watch Video</span></a> -->
+    </div>
+  </div>
+</section><!-- End Hero -->
+{% endblock Hero %}
+
+{% block portfolio %}
+
 {% if photo_list %}
-    <div class="row">
-      <div class="col-lg-12">
-	<div class="page-header">
-	  <a class="dropdown-item" href="{% url 'photologue:gallery-list' %}">Gallery list</a>
-	</div>
+<!-- ======= Portfolio Section ======= -->
+<section id="portfolio" class="portfolio">
+  <div class="container" data-aos="fade-up">
+
+    <div class="section-title">
+      <h2>Portfolio</h2>
+      <h3>Check our <span>Portfolio</span></h3>
+      <p>Ut possimus .. temporibus culpa velit eveniet modi omnis est adipisci expedita at voluptas atque vitae autem.</p>
+    </div>
+
+    <div class="row" data-aos="fade-up" data-aos-delay="100">
+      <div class="col-lg-12 d-flex justify-content-center">
+        <ul id="portfolio-flters">
+          <li data-filter="*" class="filter-active">All</li>
+	  {% for gall in gallery_list %}
+	  <li data-filter=".filter-{{ gall.slug|lower }}">{{ gall.slug }}</li>
+	  {% endfor %}
+
+          <li data-filter=".filter-app">App</li>
+          <li data-filter=".filter-card">Card</li>
+          <li data-filter=".filter-web">Web</li>
+        </ul>
       </div>
     </div>
-    <div class="row">
-      <div class="col-lg-12">
-	<div class="page-header">
-	  <a class="dropdown-item" href="{% url 'photologue:photo-list' %}">Photo list</a>
+    
+    <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="200">
+      {% for photo, phgals in photo_list %}
+      {% for gal in phgals %}
+      <div class="col-lg-4 col-md-6 portfolio-item filter-{{ gal|lower }}">
+	<img src="{{ photo.get_display_url }}" class="img-fluid" alt="">
+	<div class="portfolio-info">
+          <h4>{{ photo.title }}</h4>
+          <p>{{ photo.gallery }}</p>
+          <a href="{{ photo.get_display_url }}" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="{{ photo.title }}"><i class="bx bx-plus"></i></a>
+	  <a href="/photo/{{ photo.slug }}" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
 	</div>
       </div>
-    </div>
-    <ul>
-    {% for ph, phifn in photo_list %}
-    <div class="row">
-      <div class="col-lg-12">
-	<div class="page-header">
-          <li><a href="/{{ ph }}/vote">{{ phifn }}</a></li>
-	</div>
-      </div>
-    </div>
-    {% empty %}
-    <li>Sorry, no athletes in this list.</li>
-    {% endfor %}
-    </ul>
-{% else %}
-    <p>No polls are available.</p>
-{% endif %}
-{% endblock %}
+      {% endfor %}
+      {% endfor %}
+
+      {% else %}
+      <p>No polls are available.</p>
+      {% endif %}
+      
+      {% endblock portfolio%}
