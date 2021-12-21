@@ -23,7 +23,7 @@
       poster="MY_VIDEO_POSTER.jpg"
       data-setup="{}"
       >
-      <source src="/media/20211209_110127.mp4" type="video/mp4" />
+      <source src="/media/output.mp4" type="video/mp4" />
       <!-- source src="MY_VIDEO.webm" type="video/webm" / -->
       <p class="vjs-no-js">
 	To view this video please enable JavaScript, and consider upgrading to a
@@ -48,22 +48,20 @@
   <div class="container" data-aos="fade-up">
 
     <div class="section-title">
-      <h2>Portfolio</h2>
-      <h3>Check our <span>Portfolio</span></h3>
-      <p>Ut possimus .. temporibus culpa velit eveniet modi omnis est adipisci expedita at voluptas atque vitae autem.</p>
+      <h2>Галерея</h2>
+      <h3> <span>галерея</span></h3>
+      <p></p>
     </div>
 
     <div class="row" data-aos="fade-up" data-aos-delay="100">
       <div class="col-lg-12 d-flex justify-content-center">
         <ul id="portfolio-flters">
-          <li data-filter="*" class="filter-active">All</li>
+          <li data-filter="*" class="filter-active">Все</li>
 	  {% for gall in gallery_list %}
-	  <li data-filter=".filter-{{ gall.slug|lower }}">{{ gall.slug }}</li>
+	  <li data-filter=".filter-{{ gall.slug|lower }}">{{ gall.title }}</li>
 	  {% endfor %}
 
-          <li data-filter=".filter-app">App</li>
-          <li data-filter=".filter-card">Card</li>
-          <li data-filter=".filter-web">Web</li>
+          <!-- li data-filter=".filter-app">App</li -->
         </ul>
       </div>
     </div>
@@ -77,7 +75,7 @@
           <h4>{{ photo.title }}</h4>
           <p>{{ photo.gallery }}</p>
           <a href="{{ photo.get_display_url }}" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="{{ photo.title }}"><i class="bx bx-plus"></i></a>
-	  <a href="/photo/{{ photo.slug }}" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
+	  <a href="/photo/{{ photo.slug|lower }}" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
 	</div>
       </div>
       {% endfor %}

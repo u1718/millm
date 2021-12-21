@@ -1,3 +1,6 @@
 data
 ~.pyc
 ~.~
+*~
+__pycache__
+public/media

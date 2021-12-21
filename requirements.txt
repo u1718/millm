@@ -2,4 +2,4 @@ Django
 django-photologue
 psycopg2-binary
 mysqlclient
-
+ipython

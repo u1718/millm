@@ -8,7 +8,7 @@ def index(request):
     photo_list = Photo.objects.order_by('-date_added') #[:5]
     gallery_list = Gallery.objects.order_by('-date_added') #[:5]
     context = {
-        'photo_list': [(p, [g for g in p.galleries.iterator()]) for p in photo_list],
+        'photo_list': [(p, [g.slug for g in p.galleries.iterator()]) for p in photo_list],
         'gallery_list': gallery_list,
     }
     #breakpoint()
