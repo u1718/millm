@@ -61,7 +61,7 @@
 	  <li data-filter=".filter-{{ gall.slug|lower }}">{{ gall.title }}</li>
 	  {% endfor %}
 
-          <!-- li data-filter=".filter-app">App</li -->
+          {# <li data-filter=".filter-app">App</li> #}
         </ul>
       </div>
     </div>
@@ -81,8 +81,57 @@
       {% endfor %}
       {% endfor %}
 
-      {% else %}
-      <p>No polls are available.</p>
-      {% endif %}
+    </div>
+  </div>
+</section><!-- End Portfolio Section -->
+{% else %}
+<p>No polls are available.</p>
+{% endif %}
+{% endblock portfolio %}
       
-      {% endblock portfolio%}
+
+{% block okak %}
+{% if galleri_list %}
+<!-- ======= Portfolio Section ======= -->
+<section id="okak" class="portfolio">
+  <div class="container" data-aos="fade-up">
+
+    <div class="section-title">
+      <h2>Так</h2>
+      <h3><span>так</span></h3>
+      <p></p>
+    </div>
+
+    <div class="row" data-aos="fade-up" data-aos-delay="100">
+      <div class="col-lg-12 d-flex justify-content-center">
+        <ul id="portfolio-flters">
+          {# <li data-filter="*" class="filter-active">Все</li> #}
+	  {% for gall in galleri_list %}
+	  <li data-filter=".filter-{{ gall.slug|lower }}">{{ gall.title }}</li>
+	  {% endfor %}
+	  
+          {# <li data-filter=".filter-app">App</li> #}
+	</ul>
+      </div>
+    </div>
+    
+    <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="200">
+      {% for gal in galleri_list %}
+      <div class="col-lg-4 col-md-6 portfolio-item filter-{{ gal.slug|lower }}">
+	<a href="/galleri/{{ gal.slug|lower }}">
+	  <img src="{{ gal.extended.image.url }}" class="img-fluid" alt="">
+	</a>
+	<div class="portfolio-info">
+          <h4>{{ gal.title }}</h4>
+          {# <a href="{{ gal.extended.image.url }}" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="{{ gal.title }}"><i class="bx bx-plus"></i></a> #}
+	  {# <a href="/galleri/{{ gal.slug|lower }}" class="details-link" title="More Details"><i class="bx bx-link"></i></a> #}
+	</div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section><!-- End okak Section -->
+{% else %}
+<p>No polls are available.</p>
+{% endif %}
+{% endblock okak %}

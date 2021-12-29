@@ -33,16 +33,18 @@ ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '192.168.1.222', 'ht.xyz', 'ht.yy', '
 # Application definition
 
 INSTALLED_APPS = [
-    'django.contrib.admin',
-    'django.contrib.auth',
-    'django.contrib.contenttypes',
-    'django.contrib.sessions',
-    'django.contrib.messages',
-    'django.contrib.staticfiles',
-    'django.contrib.sites', #am#ph
-    'photologue',           #am#ph
-    'sortedm2m',            #am#ph
-    'millm',        
+   'django.contrib.admin',
+   'django.contrib.auth',
+   'django.contrib.contenttypes',
+   'django.contrib.sessions',
+   'django.contrib.messages',
+   'django.contrib.staticfiles',
+   'django.contrib.sites', #am#ph
+   'photologue',           #am#ph
+   'sortedm2m',            #am#ph
+   'millm',
+   'photologue_custom',
+   'django_extensions',
 ]
 
 MIDDLEWARE = [
@@ -91,12 +93,12 @@ DATABASES = {
     },
     
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'postgres',
-        'USER': 'postgres',
-        'PASSWORD': 'postgres',
-        'HOST': 'db',
-        'PORT': 5432,
+        'ENGINE': os.environ.get("SQL_ENGINE", "django.db.backends.sqlite3"),
+        'NAME': os.environ.get("SQL_DATABASE", os.path.join(BASE_DIR, "db.sqlite3")),
+        'USER': os.environ.get("SQL_USER", "user"),
+        'PASSWORD': os.environ.get("SQL_PASSWORD", "password"),
+        'HOST': os.environ.get("SQL_HOST", "localhost"),
+        'PORT': os.environ.get("SQL_PORT", "5432"),
     },
     'sqlite': {
         'ENGINE': 'django.db.backends.sqlite3',

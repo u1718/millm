@@ -20,16 +20,18 @@ from django.urls import include, path, re_path
 from django.views.generic import TemplateView
 from photologue.views import GalleryListView, PhotoListView, PhotoDetailView
 from . import views
-#breakpoint()
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('photologue/', include('photologue.urls')),
 
     re_path(r'^photo/(?P<slug>[\-\d\w]+)/$', views.PhDeView.as_view(), name='plphdeveiw'),
     path('', views.index, name='index'),
+    re_path('^galleri/(?P<slug>[\-\d\w]+)/$', views.GaliDeView.as_view(), name='galideveiew'),
 
     path('h/', TemplateView.as_view(template_name="homepage.html"), name='homepage'),
     path('x/', views.indexx, name='indexx'),
     path('l/', GalleryListView.as_view(paginate_by=5), name='photologue_custom-gallery-list'),
     path('p/', PhotoListView.as_view(paginate_by=5), name='photologue_custom-gallery-list'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+

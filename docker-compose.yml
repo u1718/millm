@@ -1,18 +1,31 @@
+version: "3.7"
+
 services:
-  db:
-    image: postgres
-    volumes:
-      - ./data/db:/var/lib/postgresql/data
-    environment:
-      - POSTGRES_DB=postgres
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=postgres
   web:
-    build: .
-    command: python manage.py runserver 0.0.0.0:8000
+    build:
+      context: .
+      dockerfile: ./compose/local/web/Dockerfile
+    image: millm_web
+    command: /start
     volumes:
-      - .:/code
+      - .:/app
     ports:
-      - "8001:8000"
+      - 8110:8000
+    stdin_open: true
+    tty: true
+    env_file:
+      - ./.env/.dev-sample
     depends_on:
       - db
+  db:
+    image: postgres:14.0-alpine
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    environment:
+      - POSTGRES_DB=millm
+      - POSTGRES_USER=millm
+      - POSTGRES_PASSWORD=millm
+
+volumes:
+  postgres_data:
+

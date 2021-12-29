@@ -1,5 +1,6 @@
-Django
+Django<4
 django-photologue
 psycopg2-binary
 mysqlclient
 ipython
+django-extensions
