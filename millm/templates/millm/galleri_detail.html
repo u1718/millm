@@ -1,0 +1,24 @@
+{% extends "millm/base.html" %}
+{% load i18n debugger_tags %}
+
+{% block okak %}
+
+{% for photo in gallery.public %}
+<button type="button" class="btn btn-outline-secondary"> {% if photo.caption %}{{ photo.caption|safe }}{% endif %}</button>
+<div class="row" data-aos="fade-up" data-aos-delay="200">
+  <div class="col-2 d-flex justify-content-center">
+    <a href="{{ photo.get_display_url }}">
+      <img src="{{ photo.get_display_url }}" class="img-fluid" alt="{{ photo.title }}">
+    </a>
+  </div>
+  <div class="col-10">
+    <img src="{{ photo.extended.image.url }}" class="img-fluid" alt="{{ photo.title }}">
+  </div>
+</div>
+{% endfor %}
+
+<div>
+  <a href="{% url 'photologue:gallery-list' %}" class="btn btn-outline-secondary">{% trans "View all galleries" %}</a>
+</div>
+
+{% endblock %}
