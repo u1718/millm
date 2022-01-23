@@ -105,6 +105,8 @@
         {% block phde %}{% endblock phde %}
         {% block okak %}{% endblock okak %}
 
+	<button type="button" onclick="document.getElementById('demo').innerHTML = Date()">
+	  <p id="demo"></p>
   </main><!-- End #main -->
 
 
@@ -123,6 +125,9 @@
 
   <!-- Template Main JS File -->
   <script src="{% static 'assets/js/main.js' %}"></script>
+
+  <!-- My JS File -->
+  <script src="{% static 'js/my.js' %}"></script>
 
   </body>
 </html>
