@@ -24,7 +24,7 @@ class PhDeView(DetailView):
     #breakpoint()
 
 class GaliDeView(DetailView):
-    queryset = Gallery.objects.on_site()
+    queryset = Gallery.objects.filter(extended__isnull=False)
     template_name = 'millm/galleri_detail.html'
     #breakpoint()
 
