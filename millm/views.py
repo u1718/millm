@@ -8,7 +8,7 @@ from photologue_custom.models import GalleryExtended
 def index(request):
     photo_list = Photo.objects.order_by('-date_added') #[:5]
     gallery_list = Gallery.objects.on_site().is_public().order_by('-date_added') #[:5]
-    galleri_list = Gallery.objects.on_site().filter(extended__isnull=False).order_by('-date_added') #[:5]
+    galleri_list = Gallery.objects.filter(extended__isnull=False).order_by('-date_added') #[:5]
   
     context = {
         'photo_list': [(p, [g.slug for g in p.galleries.iterator()]) for p in photo_list],
