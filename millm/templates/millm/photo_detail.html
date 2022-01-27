@@ -28,13 +28,12 @@
     <section id="portfolio-details" class="portfolio-details">
       <div class="container">
 
-        <div class="row gy-4">
+        <div class="row">
 
-          <div class="col-lg-8">
+          <div class="col-lg-4">
             <div class="portfolio-details-slider swiper">
               <div class="swiper-wrapper align-items-center">
 
-		{% if object.caption %}<p>{{ object.caption|safe }}</p>{% endif %}
 		<a href="{{ object.image.url }}">
                   <div class="swiper-slide">
 		    <img src="{{ object.get_display_url }}" class="img-thumbnail" alt="{{ object.title }}">
@@ -46,9 +45,9 @@
             </div>
           </div>
 
-          <div class="col-lg-4">
+          <div class="col-lg-8">
             <div class="portfolio-info">
-              <h3>{{ object.caption|safe }}</h3>
+	      {% if object.caption %}<p>{{ object.caption|safe }}</p>{% endif %}
               <!-- ul>
                 <li><strong>Category</strong>: Web design</li>
                 <li><strong>Client</strong>: ASU Company</li>
