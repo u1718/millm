@@ -3,7 +3,8 @@
 
 {% block okak %}
 
-{% for photo in gallery.public %}
+{{ gallery|pdb }}
+{% for photo in gallery.photos.all %}
 <button type="button" class="btn btn-outline-secondary"> {% if photo.caption %}{{ photo.caption|safe }}{% endif %}</button>
 <div class="row" data-aos="fade-up" data-aos-delay="200">
   <div class="col-2 d-flex justify-content-center">
