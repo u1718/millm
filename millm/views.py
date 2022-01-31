@@ -6,8 +6,8 @@ from photologue.models import Photo, Gallery
 from photologue_custom.models import GalleryExtended
 
 def index(request):
-    photo_list = Photo.objects.order_by('-date_added') #[:5]
-    gallery_list = Gallery.objects.order_by('-date_added') #[:5]
+    photo_list = Photo.objects.on_site().is_public().order_by('-date_added') #[:5]
+    gallery_list = Gallery.objects.on_site().is_public().order_by('-date_added') #[:5]
     galleri_list = Gallery.objects.filter(extended__isnull=False).order_by('-date_added') #[:5]
   
     context = {
@@ -24,7 +24,7 @@ class PhDeView(DetailView):
     #breakpoint()
 
 class GaliDeView(DetailView):
-    queryset = Gallery.objects.on_site().is_public()
+    queryset = Gallery.objects.filter(extended__isnull=False)
     template_name = 'millm/galleri_detail.html'
     #breakpoint()
 
