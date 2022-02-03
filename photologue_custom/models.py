@@ -43,3 +43,4 @@ class PhotoExtended(models.Model):
 
     def __str__(self):
         return self.photo.title
+

@@ -8,9 +8,8 @@ from .models import GalleryExtended, PhotoExtended
 
 class GalleryExtendedInline(admin.StackedInline):
     model = GalleryExtended
-    can_delete = False
-
-
+    can_delete = True
+ 
 class GalleryAdmin(GalleryAdminDefault):
 
     """Define our new one-to-one model as an inline of Photologue's Gallery model."""
@@ -22,7 +21,7 @@ admin.site.register(Gallery, GalleryAdmin)
 
 class PhotoExtendedInline(admin.StackedInline):
     model = PhotoExtended
-    can_delete = False
+    can_delete = True
 
 
 class PhotoAdmin(PhotoAdminDefault):
