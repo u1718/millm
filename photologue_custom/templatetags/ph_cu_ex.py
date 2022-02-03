@@ -10,6 +10,6 @@ def current_time(format_string):
 @register.simple_tag
 def check_expanded_attr(attr):
     try:
-        return attr.expanded.image.url
+        return attr.extended.image.url
     except:
         return False
