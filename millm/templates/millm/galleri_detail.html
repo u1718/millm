@@ -5,7 +5,7 @@
 
 {# { gallery |pdb } #}
 {% for photo in gallery.photos.all %}
-{# { photo |pdb } #}
+{{ photo |pdb }}
 <button type="button" class="btn btn-outline-secondary"> {% if photo.caption %}{{ photo.caption|safe }}{% endif %}</button>
 <div class="row" data-aos="fade-up" data-aos-delay="200">
   <div class="col-2 d-flex justify-content-center">
@@ -15,6 +15,7 @@
   </div>
   <div class="col-10">
     {% check_expanded_attr photo as photo_extended_image_url %}
+    {{ photo_extended_image_url |pdb }}
     {% if photo_extended_image_url %}
     <img src="{{ photo.extended.image.url }}" class="img-fluid" alt="{{ photo.title }}">
     {% endif %}
