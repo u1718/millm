@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-8$#zrmp#we6%i85q^b41+uyfua4=(&$nbgr1ud+fn2-_(kz7=o
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '192.168.1.222', 'ht.xyz', 'ht.yy', 'cuzco.pythonanywhere.com']
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '192.168.1.222', 'ht.xyz.local', 'cuzco.pythonanywhere.com']
 
 
 # Application definition
@@ -163,3 +163,11 @@ SITE_ID = 1                                              #am#ph
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+#EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.mail.ru'
+EMAIL_USE_TLS = True
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'drizla@inbox.ru'
+EMAIL_HOST_PASSWORD = 'cK48DPqWv3VH76WFeB6p'
