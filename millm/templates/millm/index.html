@@ -41,11 +41,10 @@
 {% endblock Hero %}
 
 {% block portfolio %}
-
-{% if photo_list %}
 <!-- ======= Portfolio Section ======= -->
 <section id="portfolio" class="portfolio">
-  <div class="container" data-aos="fade-up">
+    {% if photo_list %}
+    <div class="container" data-aos="fade-up">
 
     <div class="section-title">
       <h2>Галерея</h2>
@@ -82,19 +81,18 @@
       {% endfor %}
 
     </div>
-  </div>
+    </div>
+    {% else %}
+    <p>No polls are available.</p>
+    {% endif %}
 </section><!-- End Portfolio Section -->
-{% else %}
-<p>No polls are available.</p>
-{% endif %}
 {% endblock portfolio %}
-      
 
 {% block okak %}
-{% if galleri_list %}
 <!-- ======= Portfolio Section ======= -->
 <section id="okak" class="portfolio">
-  <div class="container" data-aos="fade-up">
+    {% if galleri_list %}
+    <div class="container" data-aos="fade-up">
 
     <div class="section-title">
       <h2>Так</h2>
@@ -122,18 +120,18 @@
 	  <img src="{{ gal.extended.image.url }}" class="img-fluid" alt="">
 	</a>
 	<div class="portfolio-info">
-          <h4>{{ gal.title }}</h4>
-          {# <a href="{{ gal.extended.image.url }}" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="{{ gal.title }}"><i class="bx bx-plus"></i></a> #}
-	  {# <a href="/galleri/{{ gal.slug|lower }}" class="details-link" title="More Details"><i class="bx bx-link"></i></a> #}
+            <h4>{{ gal.title }}</h4>
+            {# <a href="{{ gal.extended.image.url }}" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="{{ gal.title }}"><i class="bx bx-plus"></i></a> #}
+	    {# <a href="/galleri/{{ gal.slug|lower }}" class="details-link" title="More Details"><i class="bx bx-link"></i></a> #}
 	</div>
       </div>
       {% endfor %}
     </div>
-  </div>
+    </div>
+    {% else %}
+    <p>No polls are available.</p>
+    {% endif %}
 </section><!-- End okak Section -->
-{% else %}
-<p>No polls are available.</p>
-{% endif %}
 {% endblock okak %}
 
 {% block contacts %}
