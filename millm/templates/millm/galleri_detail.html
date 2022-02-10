@@ -2,26 +2,30 @@
 {% load i18n debugger_tags ph_cu_ex %}
 
 {% block gallari-detail %}
-{#{ gallery |pdb }#}
-{% for photo in gallery.photos.all %}
-{#{ photo |pdb }#}
-<button type="button" class="btn btn-outline-secondary"> {% if photo.caption %}{{ photo.caption|safe }}{% endif %}</button>
-<div class="row" data-aos="fade-up" data-aos-delay="200">
-  <div class="col-2 d-flex justify-content-center">
-    <a href="{{ photo.get_display_url }}">
-      <img src="{{ photo.get_display_url }}" class="img-fluid" alt="{{ photo.title }}">
-    </a>
+<section id="portfolio-details" class="portfolio-details">
+  <div class="container">
+    {#{ gallery |pdb }#}
+    {% for photo in gallery.photos.all %}
+    {#{ photo |pdb }#}
+    <button type="button" class="btn btn-outline-secondary"> {% if photo.caption %}{{ photo.caption|safe }}{% endif %}</button>
+    <div class="row" data-aos="fade-up" data-aos-delay="200">
+      <div class="col-2 d-flex justify-content-center">
+	<a href="{{ photo.get_display_url }}">
+	  <img src="{{ photo.get_display_url }}" class="img-fluid" alt="{{ photo.title }}">
+	</a>
+      </div>
+      <div class="col-10">
+	{% check_expanded_attr photo as photo_extended_image_url %}
+	{#{ photo_extended_image_url |pdb }#}
+	{% if photo_extended_image_url %}
+	<img src="{{ photo.extended.image.url }}" class="img-fluid" alt="{{ photo.title }}">
+	{% endif %}
+      </div>
+    </div>
+    {% endfor %}
+    <div>
+      <a href="{% url 'photologue:gallery-list' %}" class="btn btn-outline-secondary">{% trans "View all galleries" %}</a>
+    </div>
   </div>
-  <div class="col-10">
-    {% check_expanded_attr photo as photo_extended_image_url %}
-    {#{ photo_extended_image_url |pdb }#}
-    {% if photo_extended_image_url %}
-    <img src="{{ photo.extended.image.url }}" class="img-fluid" alt="{{ photo.title }}">
-    {% endif %}
-  </div>
-</div>
-{% endfor %}
-<div>
-  <a href="{% url 'photologue:gallery-list' %}" class="btn btn-outline-secondary">{% trans "View all galleries" %}</a>
-</div>
+</section>
 {% endblock %}
