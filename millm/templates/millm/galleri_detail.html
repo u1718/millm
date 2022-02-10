@@ -2,7 +2,7 @@
 {% load i18n debugger_tags ph_cu_ex %}
 
 {% block gallari-detail %}
-<section id="portfolio-details" class="portfolio-details">
+<section id="gallari-detail" class="portfolio-details">
   <div class="container">
     {#{ gallery |pdb }#}
     {% for photo in gallery.photos.all %}
@@ -27,5 +27,5 @@
       <a href="{% url 'photologue:gallery-list' %}" class="btn btn-outline-secondary">{% trans "View all galleries" %}</a>
     </div>
   </div>
-</section>
+</section><!-- End gallari-detail Section -->
 {% endblock %}
