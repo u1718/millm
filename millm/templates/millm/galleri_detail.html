@@ -1,9 +1,8 @@
 {% extends "millm/base.html" %}
 {% load i18n debugger_tags ph_cu_ex %}
 
-{% block okak %}
-
-{# { gallery |pdb } #}
+{% block gallari-detail %}
+{#{ gallery |pdb }#}
 {% for photo in gallery.photos.all %}
 {#{ photo |pdb }#}
 <button type="button" class="btn btn-outline-secondary"> {% if photo.caption %}{{ photo.caption|safe }}{% endif %}</button>
@@ -22,9 +21,7 @@
   </div>
 </div>
 {% endfor %}
-
 <div>
   <a href="{% url 'photologue:gallery-list' %}" class="btn btn-outline-secondary">{% trans "View all galleries" %}</a>
 </div>
-
-{% endblock %}
+{% endblock gallari-detail %}
