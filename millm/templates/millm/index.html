@@ -43,8 +43,8 @@
 {% block portfolio %}
 <!-- ======= Portfolio Section ======= -->
 <section id="portfolio" class="portfolio">
-    {% if photo_list %}
-    <div class="container" data-aos="fade-up">
+  {% if photo_list %}
+  <div class="container" data-aos="fade-up">
 
     <div class="section-title">
       <h2>Галерея</h2>
@@ -59,7 +59,6 @@
 	  {% for gall in gallery_list %}
 	  <li data-filter=".filter-{{ gall.slug|lower }}">{{ gall.title }}</li>
 	  {% endfor %}
-
           {# <li data-filter=".filter-app">App</li> #}
         </ul>
       </div>
@@ -79,45 +78,42 @@
       </div>
       {% endfor %}
       {% endfor %}
-
     </div>
-    </div>
-    {% else %}
-    <p>No polls are available.</p>
-    {% endif %}
+  </div>
+  {% else %}
+  <p>No polls are available.</p>
+  {% endif %}
 </section><!-- End Portfolio Section -->
 {% endblock %}
 
 {% block okak %}
 <!-- ======= Portfolio Section ======= -->
 <section id="okak" class="portfolio">
-    {% if galleri_list %}
-    <div class="container" data-aos="fade-up">
+  {% if galleri_list %}
+  <div class="container" data-aos="fade-up">
 
-	<div class="section-title">
-	    <h2>Так</h2>
-	    <h3><span>так</span></h3>
-	    <p></p>
-	</div>
-
-	<div class="row portfolio-container" data-aos="fade-up" data-aos-delay="200">
-	    {% for gal in galleri_list %}
-	    <div class="col-lg-4 col-md-6 portfolio-item filter-{{ gal.slug|lower }}">
-		<a href="/galleri/{{ gal.slug|lower }}">
-		    <img src="{{ gal.extended.image.url }}" class="img-fluid" alt="">
-		</a>
-		<div class="portfolio-info">
-		    <h4>{{ gal.title }}</h4>
-		    {# <a href="{{ gal.extended.image.url }}" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="{{ gal.title }}"><i class="bx bx-plus"></i></a> #}
-		    {# <a href="/galleri/{{ gal.slug|lower }}" class="details-link" title="More Details"><i class="bx bx-link"></i></a> #}
-		</div>
-	    </div>
-	    {% endfor %}
-	</div>
+    <div class="section-title">
+      <h2>Так</h2>
+      <h3><span>так</span></h3>
+      <p style="font-size: 18px; margin: 1px">Если заинтересовались и хотите подобные поделки себе, то можете прислать понравившуюся картинку на почту mcdv@bk.ru с размерами и на каком материале делать. В ответ мы присылаем модель, как она будет выглядеть. Если всё устраивает оговариваем цену и другие вопросы и приступаем к изготовлению. Пример как выглядит картинка на моделе ниже, щелкайте по картинке мышкой.</p>
     </div>
-    {% else %}
-    <p>No polls are available.</p>
-    {% endif %}
+
+    <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="200">
+      {% for gal in galleri_list %}
+      <div class="col-lg-4 col-md-6 portfolio-item filter-{{ gal.slug|lower }}">
+	<a href="/galleri/{{ gal.slug|lower }}">
+	  <img src="{{ gal.extended.image.url }}" class="img-fluid" alt="">
+	</a>
+	<div class="portfolio-info">
+	  <h4>{{ gal.title }}</h4>
+	</div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+  {% else %}
+  <p>No polls are available.</p>
+  {% endif %}
 </section><!-- End okak Section -->
 {% endblock %}
 
